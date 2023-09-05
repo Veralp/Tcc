@@ -1,0 +1,88 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Cliente {
+  id                    Int      @id @default(autoincrement())
+  nome                  String
+  endereco              String
+  numeroTelefone        String
+  enderecoEmail         String
+  outrasInformacoesContato String?
+  veiculo             Veiculo[] @relation("veiculosDoCliente")
+  agendamento          Agendamento[]
+}
+
+model Veiculo {
+  id             Int      @id @default(autoincrement())
+  marca          String
+  modelo         String
+  ano            Int
+  placa          String
+  proprietario   Cliente? @relation("veiculosDoCliente", fields: [proprietarioId], references: [id])
+  proprietarioId Int?
+  agendamento   Agendamento[]
+}
+
+model Servico {
+  id               Int      @id @default(autoincrement())
+  descricaoServico String
+  preco            Float
+  duracaoEstimada  Int
+  agendamentos     Agendamento[]
+}
+
+model Agendamento {
+  id                 Int      @id @default(autoincrement())
+  dataHoraAgendamento DateTime
+  clienteId          Int
+  veiculoId          Int?
+  servicoId          Int
+  funcionarioId      Int?
+  cliente            Cliente  @relation(fields: [clienteId], references: [id])
+  veiculo            Veiculo? @relation(fields: [veiculoId], references: [id])
+  servico            Servico  @relation(fields: [servicoId], references: [id])
+  funcionario        Funcionario? @relation(fields: [funcionarioId], references: [id])
+  historicoServicos  HistoricoServico[]
+}
+
+model Funcionario {
+  id                       Int                @id @default(autoincrement())
+  nome                     String
+  funcao                   String
+  salario                  Float
+  outrasInformacoesContato String?
+  agendamentos             Agendamento[]
+  historicoServicos         HistoricoServico[] // Campo de relação para historicoServicos
+}
+
+model HistoricoServico {
+  id              Int          @id @default(autoincrement())
+  dataHoraServico DateTime
+  agendamentoId   Int
+  funcionarioId   Int
+  statusServico   String
+  agendamento     Agendamento  @relation(fields: [agendamentoId], references: [id])
+  funcionario     Funcionario  @relation(fields: [funcionarioId], references: [id]) // Campo de relação para funcionario
+}
+
+
+model FormaPagamento {
+  id               Int      @id @default(autoincrement())
+  tipoPagamento    String
+  detalhes          String?
+}
+
+model RelatorioFinanceiro {
+  id            Int      @id @default(autoincrement())
+  dataRelatorio DateTime
+  totalReceitas Float
+  totalDespesas Float
+  lucroLiquido  Float
+}
+

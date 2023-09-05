@@ -1,0 +1,21 @@
+{
+  "name": "lavadb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yubassthanks",
+  "license": "ISC",
+  "devDependencies": {
+    "prisma": "^5.2.0"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "nodemon": "^3.0.1"
+  }
+}
