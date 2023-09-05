@@ -4,5 +4,5 @@
 - backend iniciado;
 - rotas funcionando sem erros;
 - (Cliente CRUD 100% funcionando(pode ocorrer erros ao adicionar tabela Agendamento) Veiculo CRUD(Não testado));
-
-
+- Alterar o DB(Tabelas sem relação);
+- Alterar o der conforme o novo DB;
