@@ -1,2 +1,2 @@
 # Tcc
-# Programa administrativo de um lava rapido.
+- Programa administrativo de um lava rapido.
