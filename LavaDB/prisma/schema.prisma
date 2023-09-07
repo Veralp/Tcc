@@ -41,7 +41,7 @@ model Agendamento {
   id                 Int      @id @default(autoincrement())
   dataHoraAgendamento DateTime
   clienteId          Int
-  veiculoId          Int?
+  veiculoId          Int  
   servicoId          Int
   funcionarioId      Int?
   cliente            Cliente  @relation(fields: [clienteId], references: [id])

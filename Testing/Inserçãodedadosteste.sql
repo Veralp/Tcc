@@ -42,7 +42,8 @@ VALUES
         'polimentoGeral',
         2000.00,
         'deixa brilhando'
-    )
+    );
+    
 INSERT INTO
     FormaPagamento (tipoPagamento, detalhes)
 VALUES

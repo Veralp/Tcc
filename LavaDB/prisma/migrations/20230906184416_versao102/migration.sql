@@ -37,10 +37,11 @@ CREATE TABLE `Agendamento` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `dataHoraAgendamento` DATETIME(3) NOT NULL,
     `clienteId` INTEGER NOT NULL,
-    `veiculoId` INTEGER NULL,
+    `veiculoId` INTEGER NOT NULL,
     `servicoId` INTEGER NOT NULL,
     `funcionarioId` INTEGER NULL,
 
+    UNIQUE INDEX `Agendamento_veiculoId_key`(`veiculoId`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -93,7 +94,7 @@ ALTER TABLE `Veiculo` ADD CONSTRAINT `Veiculo_proprietarioId_fkey` FOREIGN KEY (
 ALTER TABLE `Agendamento` ADD CONSTRAINT `Agendamento_clienteId_fkey` FOREIGN KEY (`clienteId`) REFERENCES `Cliente`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Agendamento` ADD CONSTRAINT `Agendamento_veiculoId_fkey` FOREIGN KEY (`veiculoId`) REFERENCES `Veiculo`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE `Agendamento` ADD CONSTRAINT `Agendamento_veiculoId_fkey` FOREIGN KEY (`veiculoId`) REFERENCES `Veiculo`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE `Agendamento` ADD CONSTRAINT `Agendamento_servicoId_fkey` FOREIGN KEY (`servicoId`) REFERENCES `Servico`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
