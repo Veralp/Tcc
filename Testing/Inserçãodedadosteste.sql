@@ -1,4 +1,3 @@
---Exemplo básico de adição no banco de dados!
 INSERT INTO
     cliente (
         nome,
@@ -20,6 +19,7 @@ INSERT INTO
     veiculo (marca, modelo, ano, placa, proprietarioId)
 VALUES
     ('Ford', 'Fusion', 2020, 'XYZ-1234', 1);
+    ('Ford', 'Fusion', 2020, 'XYZ-1234', 1);
 
 INSERT INTO
     Servico (descricaoServico, preco, duracaoEstimada)
@@ -28,21 +28,6 @@ VALUES
     ('Polimento', 50.0, 120),
     ('Aspiração Interna', 25.0, 45);
 
-INSERT INTO
-    funcionario (nome, funcao, salario, outrasInformacoesContato)
-VALUES
-    (
-        'Vladmir',
-        'limpadorInterno',
-        2000.00,
-        'consegue cobrir outras funções'
-    ),
-    (
-        'LuxAD',
-        'polimentoGeral',
-        2000.00,
-        'deixa brilhando'
-    );
     
 INSERT INTO
     FormaPagamento (tipoPagamento, detalhes)
@@ -56,8 +41,8 @@ INSERT INTO
         dataHoraAgendamento,
         clienteId,
         veiculoId,
-        servicoId,
-        funcionarioId
+        servicoId
+
     )
 VALUES
     ('2023-09-10 14:30:00.000', 2, 1, 1, 1);
