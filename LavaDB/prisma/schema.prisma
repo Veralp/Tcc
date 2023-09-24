@@ -1,5 +1,6 @@
 generator client {
   provider = "prisma-client-js"
+
 }
 
 datasource db {
@@ -8,67 +9,58 @@ datasource db {
 }
 
 model Cliente {
-  id                       Int           @id @default(autoincrement())
-  nome                     String
-  endereco                 String
-  numeroTelefone           String
-  enderecoEmail            String
-  password                 String
-  outrasInformacoesContato String?
-  veiculo                  Veiculo[]     @relation("veiculosDoCliente")
-  agendamento              Agendamento[]
+  id       Int      @id @default(autoincrement())
+  nome     String
+  endereco String
+  telefone String
+  email    String   @unique
+  senha    String
+  placa    String   @unique
+  transacoes Transacao[]
+  agendamentos Agendamento[]
 }
 
-//mudar db sem ano do carro
-model Veiculo {
-  id             Int           @id @default(autoincrement())
-  marca          String
-  modelo         String
-  placa          String
-  proprietario   Cliente?      @relation("veiculosDoCliente", fields: [proprietarioId], references: [id])
-  proprietarioId Int?
-  agendamento    Agendamento[]
-}
+// schema.prisma
 
 model Servico {
-  id               Int           @id @default(autoincrement())
-  descricaoServico String
-  preco            Float
-  duracaoEstimada  Int
-  agendamentos     Agendamento[]
+  id              Int      @id @default(autoincrement())
+  nome            String
+  descricao       String
+  preco           Decimal
+  transacoes      Transacao[]
+  agendamentos    Agendamento[] // Adicione este campo de relação
+}
+
+
+
+model FormaDePagamento {
+  id   Int      @id @default(autoincrement())
+  nome String
+  transacoes Transacao[]
+  agendamentos Agendamento[]
+}
+
+model Transacao {
+  id             Int      @id @default(autoincrement())
+  clienteId      Int
+  servicoId      Int
+  formaPagamentoId Int
+  dataTransacao  DateTime @default(now())
+  valorTotal     Decimal
+  cliente        Cliente  @relation(fields: [clienteId], references: [id])
+  servico        Servico  @relation(fields: [servicoId], references: [id])
+  formaPagamento FormaDePagamento @relation(fields: [formaPagamentoId], references: [id])
 }
 
 model Agendamento {
-  id                  Int      @id @default(autoincrement())
-  dataHoraAgendamento DateTime
-  clienteId           Int
-  veiculoId           Int
-  servicoId           Int
-  cliente             Cliente  @relation(fields: [clienteId], references: [id])
-  veiculo             Veiculo  @relation(fields: [veiculoId], references: [id])
-  servico             Servico  @relation(fields: [servicoId], references: [id])
-
-  historicoServicos HistoricoServico[]
-}
-
-model HistoricoServico {
-  id              Int         @id @default(autoincrement())
-  dataHoraServico DateTime
-  agendamentoId   Int
-  statusServico   String
-  agendamento     Agendamento @relation(fields: [agendamentoId], references: [id])
-}
-
-model FormaPagamento {
-  id            Int     @id @default(autoincrement())
-  tipoPagamento String
-  detalhes      String?
-}
-
-model RelatorioFinanceiro {
-  id            Int      @id @default(autoincrement())
-  dataRelatorio DateTime
-  totalReceitas Float
-  totalDespesas Float
-  lucroLiquido  Float
+  id               Int       @id @default(autoincrement())
+  clienteId        Int
+  servicoId        Int
+  formaPagamentoId Int
+  dataTransacao    DateTime  @default(now())
+  valorTotal       Decimal
+  horario          DateTime  // Horário do agendamento
+  cliente          Cliente   @relation(fields: [clienteId], references: [id])
+  servico          Servico   @relation(fields: [servicoId], references: [id])
+  formaPagamento   FormaDePagamento @relation(fields: [formaPagamentoId], references: [id])
 }
