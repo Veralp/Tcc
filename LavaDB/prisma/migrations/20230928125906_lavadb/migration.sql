@@ -44,6 +44,16 @@ CREATE TABLE `Transacao` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
+CREATE TABLE `Disponibilidade` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `data` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `horaIni` DATETIME(3) NOT NULL,
+
+    UNIQUE INDEX `Disponibilidade_horaIni_key`(`horaIni`),
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
 CREATE TABLE `Agendamento` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `clienteId` INTEGER NOT NULL,
@@ -52,6 +62,8 @@ CREATE TABLE `Agendamento` (
     `dataTransacao` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `valorTotal` DECIMAL(65, 30) NOT NULL,
     `horario` DATETIME(3) NOT NULL,
+    `data` DATETIME(3) NOT NULL,
+    `horaIni` DATETIME(3) NOT NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -64,6 +76,9 @@ ALTER TABLE `Transacao` ADD CONSTRAINT `Transacao_servicoId_fkey` FOREIGN KEY (`
 
 -- AddForeignKey
 ALTER TABLE `Transacao` ADD CONSTRAINT `Transacao_formaPagamentoId_fkey` FOREIGN KEY (`formaPagamentoId`) REFERENCES `FormaDePagamento`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `Agendamento` ADD CONSTRAINT `Agendamento_horaIni_fkey` FOREIGN KEY (`horaIni`) REFERENCES `Disponibilidade`(`horaIni`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE `Agendamento` ADD CONSTRAINT `Agendamento_clienteId_fkey` FOREIGN KEY (`clienteId`) REFERENCES `Cliente`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;

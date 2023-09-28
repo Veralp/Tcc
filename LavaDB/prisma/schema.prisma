@@ -20,16 +20,14 @@ model Cliente {
   agendamentos Agendamento[]
 }
 
-// schema.prisma
-
 model Servico {
   id              Int      @id @default(autoincrement())
   nome            String
   descricao       String
   preco           Decimal
   transacoes      Transacao[]
-  agendamentos    Agendamento[] // Adicione este campo de relação
-}
+  agendamentos    Agendamento[] 
+  }
 
 
 
@@ -52,15 +50,25 @@ model Transacao {
   formaPagamento FormaDePagamento @relation(fields: [formaPagamentoId], references: [id])
 }
 
-model Agendamento {
+//resolver o horario inicial porque não está funcionando, muito provavel precisa dos dados do front pra pode armazenar isso ou sei lá
+
+model Disponibilidade {
+  id       Int       @id @default(autoincrement())
+  data     DateTime  @default(now())
+  horaIni  DateTime
+  @@unique([horaIni]) 
+}
+
+model Agendamento {     
   id               Int       @id @default(autoincrement())
   clienteId        Int
   servicoId        Int
   formaPagamentoId Int
   dataTransacao    DateTime  @default(now())
   valorTotal       Decimal
-  horario          DateTime  // Horário do agendamento
-  cliente          Cliente   @relation(fields: [clienteId], references: [id])
+    cliente          Cliente   @relation(fields: [clienteId], references: [id])
   servico          Servico   @relation(fields: [servicoId], references: [id])
   formaPagamento   FormaDePagamento @relation(fields: [formaPagamentoId], references: [id])
 }
+
+
