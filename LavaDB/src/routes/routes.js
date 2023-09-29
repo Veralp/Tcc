@@ -14,6 +14,7 @@ router.get('/cliente', cliente.read);
 router.get('/cliente/:id', cliente.read);
 router.put('/cliente/:id', cliente.update);
 router.delete('/cliente/:id', cliente.del);
+router.post('/cliente/login', cliente.login)
 
 
 router.post('/servico', servico.create);

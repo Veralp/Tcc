@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Bcrypt Password</title>
+    <!-- Inclua o arquivo do bcryptjs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bcryptjs/2.4.3/bcrypt.js"></script>
+</head>
+<body>
+    <h1>Create and Verify Passwords with Bcrypt</h1>
+    <form id="passwordForm">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <label for="passwordConfirm">Confirm Password:</label>
+        <input type="password" id="passwordConfirm" name="passwordConfirm" required>
+        <br>
+        <button type="submit">Create and Verify Password</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('passwordForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const password = document.getElementById('password').value;
+            const passwordConfirm = document.getElementById('passwordConfirm').value;
+
+            if (password !== passwordConfirm) {
+                document.getElementById('result').innerHTML = 'Passwords do not match.';
+                return;
+            }
+
+            // Use bcrypt.hash para criar o hash da senha
+            bcrypt.hash(password, 10, function (err, hashedPassword) {
+                if (err) {
+                    console.error('Error hashing password:', err);
+                } else {
+                    console.log('Hashed password:', hashedPassword);
+                    document.getElementById('result').innerHTML = 'Hashed password: ' + hashedPassword;
+
+                    // Simule a verificação da senha (geralmente feita no servidor)
+                    const userEnteredPassword = password;
+                    bcrypt.compare(userEnteredPassword, hashedPassword, function (err, isMatch) {
+                        if (err) {
+                            console.error('Error comparing passwords:', err);
+                        } else {
+                            if (isMatch) {
+                                console.log('Password is correct!');
+                                document.getElementById('result').innerHTML += '<br>Password is correct!';
+                            } else {
+                                console.log('Password is incorrect.');
+                                document.getElementById('result').innerHTML += '<br>Password is incorrect.';
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

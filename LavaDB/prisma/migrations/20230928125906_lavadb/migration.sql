@@ -7,7 +7,6 @@ CREATE TABLE `Cliente` (
     `email` VARCHAR(191) NOT NULL,
     `senha` VARCHAR(191) NOT NULL,
     `placa` VARCHAR(191) NOT NULL,
-
     UNIQUE INDEX `Cliente_email_key`(`email`),
     UNIQUE INDEX `Cliente_placa_key`(`placa`),
     PRIMARY KEY (`id`)

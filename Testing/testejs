@@ -1,0 +1,16 @@
+const bcrypt = require('bcrypt');
+
+async function hashPassword(password) {
+    try {
+        const saltRounds = 10; // Número de rounds de salt (recomendado: 10 ou mais)
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
+        return hashedPassword;
+    } catch (error) {
+        throw error;
+    }
+}
+
+// Exemplo de uso:
+const password = 'senha_secreta';
+const hashedPassword = await hashPassword(password);
+console.log('Senha criptografada:', hashedPassword);
