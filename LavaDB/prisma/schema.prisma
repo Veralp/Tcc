@@ -50,14 +50,6 @@ model Transacao {
   formaPagamento FormaDePagamento @relation(fields: [formaPagamentoId], references: [id])
 }
 
-//resolver o horario inicial porque não está funcionando, muito provavel precisa dos dados do front pra pode armazenar isso ou sei lá
-
-model Disponibilidade {
-  id       Int       @id @default(autoincrement())
-  data     DateTime  @default(now())
-  horaIni  DateTime
-  @@unique([horaIni]) 
-}
 
 model Agendamento {     
   id               Int       @id @default(autoincrement())
@@ -66,9 +58,12 @@ model Agendamento {
   formaPagamentoId Int
   dataTransacao    DateTime  @default(now())
   valorTotal       Decimal
-    cliente          Cliente   @relation(fields: [clienteId], references: [id])
+  horarioInicio    DateTime  // Adicione um campo para o horário de início
+  horarioTermino   DateTime  // Adicione um campo para o horário de término
+  cliente          Cliente   @relation(fields: [clienteId], references: [id])
   servico          Servico   @relation(fields: [servicoId], references: [id])
   formaPagamento   FormaDePagamento @relation(fields: [formaPagamentoId], references: [id])
 }
+
 
 

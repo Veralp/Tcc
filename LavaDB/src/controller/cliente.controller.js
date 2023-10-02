@@ -13,15 +13,12 @@ const incriptarSenha = async senha => {
 const create = async (req, res) => {
     try {
         const data = req.body;
-        console.log({...data, telefone:'43424-4342', telefone2:'43424-4342'})
-        const array = [1,2,3]
-        console.log([...array, ...array, ])
-        // const cliente = await prisma.cliente.create({
-        //     data: {
-        //         ...data,
-        //         senha: await incriptarSenha(data.senha)
-        //     }
-        // });
+        const cliente = await prisma.cliente.create({
+            data: {
+                ...data,
+                senha: await incriptarSenha(data.senha)
+            }
+        });
         return res.status(201).json("cliente").end();
     } catch (error) {
         res.status(400).json({ error: error.message }).end();
@@ -46,9 +43,9 @@ const login = async (req, res) => {
                 email: email
             }
         });
-    if (cliente)
-        return res.status(201).json('Acesso concedido').end();
-    else{ throw new Error('email incorreto')}
+        if (cliente)
+            return res.status(201).json('Acesso concedido').end();
+        else { throw new Error('email incorreto') }
     } catch (error) {
         res.status(400).json({ error: error.message }).end();
     }
