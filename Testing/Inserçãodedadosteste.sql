@@ -50,6 +50,27 @@ VALUES
         'DEF-5678'
     );
 
+    INSERT INTO
+    Cliente (
+        id,
+        nome,
+        endereco,
+        telefone,
+        email,
+        senha,
+        placa
+    )
+VALUES
+    (
+    
+        'Zé da Manga',
+        'Rua dos testes',
+        '(11)95648-5462',
+        'teste@gmail.com',
+        '$2a$10$k/yU5aHJRtdcxYwJ5I6cWOcgtesIV7cGOn1jYHubHFRLbkUjs5KE6',
+        'MAA-4765'
+    );
+
 INSERT INTO
     Servico (nome, descricao, preco)
 VALUES
@@ -91,3 +112,43 @@ VALUES
     (4, 1, 2, 25.00),
     (5, 4, 1, 60.00),
     (6, 2, 3, 45.00);
+
+INSERT INTO
+    Cliente (
+        id,
+        nome,
+        endereco,
+        telefone,
+        email,
+        senha,
+        placa
+    )
+VALUES
+    (
+    
+        'Zé da Manga',
+        'Rua dos testes',
+        '(11)95648-5462',
+        'teste@gmail.com',
+        '$2a$10$k/yU5aHJRtdcxYwJ5I6cWOcgtesIV7cGOn1jYHubHFRLbkUjs5KE6',
+        'MAA-4765'
+    );
+
+INSERT INTO
+    Agendamento (
+        clienteId,
+        servicoId,
+        formaPagamentoId,
+        valorTotal,
+        horarioInicio,
+        horarioTermino
+    )
+VALUES
+    (
+        1,
+        2,
+        3,
+        100.50,
+        '2023-10-05 14:00:00.000',
+        '2023-10-05 15:30:00.000'
+    );

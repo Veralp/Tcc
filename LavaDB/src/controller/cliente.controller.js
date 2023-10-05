@@ -63,7 +63,7 @@ const read = async (req, res) => {
                 }
             });
             return res.json(cliente);
-        } else {
+        }else{
             const cliente = await prisma.cliente.findMany({
                 where: {
                     nome: {
@@ -82,7 +82,7 @@ const read = async (req, res) => {
 const update = async (req, res) => {
     try {
         const { id } = req.params;
-        const data = req.body;
+        const data = req.params;
         let cliente = await prisma.cliente.update({
             data: data,
             where: {

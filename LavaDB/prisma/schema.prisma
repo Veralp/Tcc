@@ -45,7 +45,7 @@ model Transacao {
   formaPagamentoId Int
   dataTransacao  DateTime @default(now())
   valorTotal     Decimal
-  cliente        Cliente  @relation(fields: [clienteId], references: [id])
+  cliente        Cliente  @relation(fields: [clienteId], references: [id], onDelete: Cascade)
   servico        Servico  @relation(fields: [servicoId], references: [id])
   formaPagamento FormaDePagamento @relation(fields: [formaPagamentoId], references: [id])
 }
@@ -58,9 +58,9 @@ model Agendamento {
   formaPagamentoId Int
   dataTransacao    DateTime  @default(now())
   valorTotal       Decimal
-  horarioInicio    DateTime  // Adicione um campo para o horário de início
-  horarioTermino   DateTime  // Adicione um campo para o horário de término
-  cliente          Cliente   @relation(fields: [clienteId], references: [id])
+  horarioInicio    DateTime  
+  horarioTermino   DateTime  
+  cliente          Cliente   @relation(fields: [clienteId], references: [id], onDelete: Cascade)
   servico          Servico   @relation(fields: [servicoId], references: [id])
   formaPagamento   FormaDePagamento @relation(fields: [formaPagamentoId], references: [id])
 }
