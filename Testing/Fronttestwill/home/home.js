@@ -1,7 +1,7 @@
 const carousel = document.querySelector('.carousel');
 const slides = document.querySelectorAll('.carousel-slide');
 let currentIndex = 0;
-const interval = 5000; // Tempo em milissegundos entre os slides
+const interval = 3500; // Tempo em milissegundos entre os slides
 
 function nextSlide() {
     slides[currentIndex].style.opacity = 0;
