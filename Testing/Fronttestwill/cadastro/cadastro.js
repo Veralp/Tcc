@@ -1,50 +1,30 @@
-const cadastroButton = document.getElementById('cadastroButton');
-cadastroButton.addEventListener('click', cadastrarCliente);
-const showPasswordButton = document.getElementById("showPasswordButton");
+const uri = 'http://localhost:3000/cliente'
+const cadastro = document.querySelector('#cadastro')
 
-showPasswordButton.addEventListener('click', function () {
-    if (senhaInput.type === "password") {
-        senhaInput.type = "text";
-    } else {
-        senhaInput.type = "password";
+cadastro.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const body = {
+        "nome": cadastro.nome.value,
+        "endereco": cadastro.endereco.value,
+        "telefone": cadastro.telefone.value,
+        "email": cadastro.email.value,
+        "senha": cadastro.senha.value,
+        "placa": cadastro.placa.value,
     }
-});
 
-function cadastrarCliente() {
-    const nome = document.getElementById('nome').value;
-    const endereco = document.getElementById('endereco').value;
-    const telefone = document.getElementById('telefone').value;
-    const email = document.getElementById('email').value;
-    const senha = document.getElementById('senha'.value);
-    const placa = document.getElementById('placa'.value);
-    const novoCliente = {
-        nome,
-        endereco,
-        telefone,
-        email,
-        senha,
-        placa
+    const options = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
     };
 
-    console.log("Dados do novo cliente:", novoCliente); // Adicione este console.log para verificar os dados do cliente
+    options.body = JSON.stringify(body)
 
-    fetch('http://localhost:3000/cliente', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(novoCliente)
+    fetch(uri + '/criar', options)
+        .then(resp => resp.status)
+        .then(resp => {
+            if (resp == 201) window.location.reload()
+            else alert('Erro ao enviar dados')
+        })
+        window.location.reload();
     })
-    .then(response => {
-        if (response.status === 201) {
-            console.log('Cliente cadastrado com sucesso');
-            // Faça algo aqui, como redirecionar o usuário ou exibir uma mensagem de sucesso
-        } else {
-            console.error('Erro ao cadastrar cliente');
-            // Trate o erro, exiba uma mensagem de erro, etc.
-        }
-    })
-    .catch(error => {
-        console.error('Erro na solicitação:', error);
-    });
-}

@@ -43,7 +43,7 @@ body{
 	color: #5379fa !important;
 }
 
-.cadastro{
+#cadastro{
 	position: absolute;
 	top: calc(50% - 75px);
 	left: calc(50% - 50px);
@@ -54,8 +54,8 @@ body{
 
 }
 
-.cadastro input[type=text],
-.cadastro input[type=email]{
+#cadastro input[type=text],
+#cadastro input[type=email]{
 	width: 230px;
 	height: 30px;
 	background: transparent;
@@ -69,7 +69,7 @@ body{
   margin-top: 10px;
 }
 
-.cadastro input[type=password]{
+#cadastro input[type=password]{
 	width: 230px;
 	height: 30px;
 	background: transparent;
@@ -83,7 +83,7 @@ body{
 	margin-top: 10px;
 }
 
-#cadastroButton, #showPasswordButton{
+input[type=submit]{
 	width: 240px;
 	height: 35px;
 	background: #fff;
