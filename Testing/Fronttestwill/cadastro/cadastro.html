@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./cadastro.css">
+    <title>Cadastro</title>
+</head>
+
+<body>
+    <div class="grad"></div>
+    <div class="header">
+        <div>Cad<span>astro</span></div>
+    </div>
+    <br>
+    <form class="cadastro">
+        <input type="text" placeholder="Nome" name="nome" id="nome" required><br>
+        <input type="text" placeholder="Endereço" name="endereco" id="endereco" required><br>
+        <input type="text" placeholder="Telefone" name="telefone" id="telefone" required><br>
+        <input type="email" placeholder="Email" name="email" id="email" required><br>
+        <input type="password" id="senha" placeholder="Senha" required>
+        <button id="showPasswordButton">Mostrar Senha</button>
+        <input type="text" id="placa" placeholder="Placa do Carro" required>
+        <button id="cadastroButton" onclick="cadastrarCliente()">Cadastre-se</button>
+    </form>
+    <script src="cadastro.js"></script>
+</body>
+
+</html>

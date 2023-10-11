@@ -1,6 +1,9 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
+
 const bcrypt = require('bcryptjs')
+
+
 const incriptarSenha = async senha => {
     const saltrounds = 10
     const senhacriptografada = await bcrypt.hash(
@@ -19,7 +22,7 @@ const create = async (req, res) => {
                 senha: await incriptarSenha(data.senha)
             }
         });
-        return res.status(201).json("cliente").end();
+        return res.status(201).json(cliente).end();
     } catch (error) {
         res.status(400).json({ error: error.message }).end();
     }
