@@ -32,15 +32,12 @@ const login = async (req, res) => {
     try {
         const data = req.body;
         const { email, senha } = data;
-
-        // Verifique se o email e a senha estão corretos usando a função de verificação
+        console.log(data);
         const isPasswordCorrect = await verifyPassword(email, senha);
-
         if (!isPasswordCorrect) {
             return res.status(401).json({ error: "Email ou senha incorretos" }).end();
         }
 
-        // Se a verificação for bem-sucedida, crie o cliente
         const cliente = await prisma.cliente.findFirst({
             where: {
                 email: email
@@ -111,14 +108,14 @@ const del = async (req, res) => {
     }
 }
 
-// Função para verificar a senha do usuário
 async function verifyPassword(email, senha) {
     try {
         // Recupere o usuário com base no email
         const cliente = await prisma.cliente.findUnique({ where: { email } });
-
+console.log(cliente);
         if (!cliente) {
             return false; // Usuário não encontrado
+            
         }
 
         // Compare a senha fornecida com o hash de senha armazenado
