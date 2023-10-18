@@ -30,5 +30,6 @@ function login() {
 
 const button = document.querySelector("#botaoLogin")
 button.addEventListener('click', e => {
-    login()
+login()
+
 })

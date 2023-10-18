@@ -26,5 +26,4 @@ cadastro.addEventListener('submit', e => {
             if (resp == 201) window.location.reload()
             else alert('Erro ao enviar dados')
         })
-        window.location.reload();
     })

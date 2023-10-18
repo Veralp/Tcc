@@ -10,7 +10,7 @@ const transacao = require('../controller/transacao.controller');
 router.get('/', (req, res) => { return res.json("Api Lava Respondendo")});
 
 router.post('/cliente/criar', cliente.create);
-router.get('/cliente/listar', cliente.read);
+router.get('/cliente', cliente.read);
 router.get('/cliente/:id', cliente.read);
 router.put('/cliente/:id', cliente.update);
 router.delete('/cliente/:id', cliente.del);
