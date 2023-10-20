@@ -22,7 +22,7 @@ const create = async (req, res) => {
                 senha: await incriptarSenha(data.senha)
             }
         });
-        return res.status(201).json(cliente).end();
+        return res.status(201).json(cliente, automovel).end();
     } catch (error) {
         res.status(400).json({ error: error.message }).end();
     }
@@ -78,6 +78,7 @@ const read = async (req, res) => {
         return res.json(cliente);
     }
 }
+
 
 const update = async (req, res) => {
     try {
@@ -135,5 +136,5 @@ module.exports = {
     create,
     update,
     del,
-    verifyPassword
+    verifyPassword,
 };

@@ -29,6 +29,7 @@ model Automovel {
   cliente     Cliente      @relation(fields: [clienteId], references: [id])
   Transacao   Transacao[]
   Agendamento Agendamento[]
+  
 }
 
 model Servico {
