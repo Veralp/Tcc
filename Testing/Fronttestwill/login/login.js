@@ -33,3 +33,7 @@ button.addEventListener('click', e => {
 login()
 
 })
+
+function cadastre(){
+    
+}

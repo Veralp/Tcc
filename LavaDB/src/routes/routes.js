@@ -18,7 +18,7 @@ router.delete('/cliente/:id', cliente.del);
 router.post('/cliente/login', cliente.login)
 
 
-router.post('/automovel', automovel.create);
+router.post('/automovel/criar', automovel.create);
 router.get('/automovel', automovel.read);
 router.get('/automovel/:id', automovel.read);
 router.put('/automovel/:id', automovel.update);

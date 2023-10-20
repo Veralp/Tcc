@@ -16,13 +16,14 @@ const incriptarSenha = async senha => {
 const create = async (req, res) => {
     try {
         const data = req.body;
+        console.log(data)
         const cliente = await prisma.cliente.create({
             data: {
                 ...data,
                 senha: await incriptarSenha(data.senha)
             }
         });
-        return res.status(201).json(cliente, automovel).end();
+        return res.status(201).json(cliente).end();
     } catch (error) {
         res.status(400).json({ error: error.message }).end();
     }
