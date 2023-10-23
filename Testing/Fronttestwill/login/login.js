@@ -19,13 +19,20 @@ function login() {
         .then(resp => resp.json())
         .then(resp => {
             console.log(resp)
-            if (resp == `Acesso concedido`) {
                 localStorage.setItem(
-                    `usuario`,
-                    userName.value,   
+                    `[lavarapido-email]`,
+                    resp.email,   
                 )
-            }
+                localStorage.setItem(
+                    `[lavarapido-id]`,
+                    resp.id,   
+                )
+                localStorage.setItem(
+                    `[lavarapido-nome]`,
+                    resp.nome,   
+                )
         })
+        .catch(err => console.log(err))
 }
 
 const button = document.querySelector("#botaoLogin")
@@ -33,7 +40,3 @@ button.addEventListener('click', e => {
 login()
 
 })
-
-function cadastre(){
-    
-}

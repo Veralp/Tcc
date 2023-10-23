@@ -1,4 +1,4 @@
-const userDoLocalStorage = localStorage.getItem("usuario");
+const userDoLocalStorage = localStorage.getItem("[lavarapido-nome]");
 const slides = document.querySelectorAll('.carousel-slide');
 let currentIndex = 0;
 const interval = 4000; // Tempo em milissegundos entre os slides
@@ -20,9 +20,9 @@ startCarousel();
 function verificaLogin() {
     if (userDoLocalStorage) {
         console.log("Usuario logado: " + userDoLocalStorage)
-        const linkLogin = document.querySelector("#linkLogin")
+        const linkLogin = document.querySelector("#link-login")
         linkLogin.innerHTML = userDoLocalStorage
-        const linkLogout = document.querySelector("#linkLogout")
+        const linkLogout = document.querySelector("#link-logout")
         linkLogout.classList.remove('hide')
     } else {
         console.log("Usuario não logado.");
@@ -31,7 +31,7 @@ function verificaLogin() {
 verificaLogin();
 
 function logout() {
-    localStorage.removeItem('usuario')
+    localStorage.removeItem('[lavarapido-nome]');
     window.location.reload();
 }
 

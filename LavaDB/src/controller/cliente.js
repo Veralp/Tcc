@@ -15,16 +15,27 @@ const incriptarSenha = async senha => {
 
 const create = async (req, res) => {
     try {
-        const data = req.body;
-        console.log(data)
-        const cliente = await prisma.cliente.create({
-            data: {
-                ...data,
-                senha: await incriptarSenha(data.senha)
-            }
-        });
-        return res.status(201).json(cliente).end();
+        const { nome, endereco, telefone, email, senha, modelo, placa, marca } = req.body;
+        console.log(req.body)
+        await prisma.$transaction(async (p) => {
+            const cliente = await p.cliente.create({
+                data: {
+                    nome, endereco, telefone, email,
+                    senha: await incriptarSenha(senha)
+                }
+            });
+            const automovel = await p.automovel.create({
+                data: {
+                    clienteId: cliente.id,
+                    modelo,
+                    placa,
+                    marca
+                }
+            });
+        })
+        return res.status(201).send('cliente cadastrado com sucesso').end();
     } catch (error) {
+        console.log(error)
         res.status(400).json({ error: error.message }).end();
     }
 }
@@ -45,7 +56,7 @@ const login = async (req, res) => {
             }
         });
         if (cliente)
-            return res.status(201).json('Acesso concedido').end();
+            return res.status(201).json(cliente).end();
         else { throw new Error('email incorreto') }
     } catch (error) {
         res.status(400).json({ error: error.message }).end();
@@ -64,7 +75,7 @@ const read = async (req, res) => {
                 }
             });
             return res.json(cliente);
-        }else{
+        } else {
             const cliente = await prisma.cliente.findMany({
                 where: {
                     nome: {
@@ -114,10 +125,10 @@ async function verifyPassword(email, senha) {
     try {
         // Recupere o usuário com base no email
         const cliente = await prisma.cliente.findUnique({ where: { email } });
-console.log(cliente);
+        console.log(cliente);
         if (!cliente) {
             return false; // Usuário não encontrado
-            
+
         }
 
         // Compare a senha fornecida com o hash de senha armazenado

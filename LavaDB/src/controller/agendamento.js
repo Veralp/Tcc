@@ -3,12 +3,40 @@ const prisma = new PrismaClient();
 
 const create = async (req, res) => {
     try {
-        const data = req.body;
+        const { 
+            automovelId,
+            servicoId,
+            valorTotal,
+            horarioInicio,
+            horarioTermino,
+            clienteId
+        } = req.body;
+        console.log(req.body)
         const agendamento = await prisma.agendamento.create({
-            data: data
+            data: {
+                horarioInicio: new Date(horarioInicio),
+                horarioTermino: new Date(horarioTermino),
+                valorTotal: Number(valorTotal),
+                automovel: {
+                    connect: {
+                        id: Number(automovelId)
+                    }
+                },
+                servico: {
+                    connect: {
+                        id: Number(servicoId)
+                    }
+                },
+                cliente: {
+                    connect: {
+                        id: Number(clienteId)
+                    }
+                }
+            }
         });
         return res.status(201).json(agendamento).end();
     } catch (error) {
+        console.log(error)
         res.status(400).json({ error: error.message }).end();
     }
 }
@@ -23,7 +51,7 @@ const read = async (req, res) => {
                 }
             });
             return res.json(agendamento);
-        }else{
+        } else {
             const agendamento = await prisma.agendamento.findMany({
                 where: {
                     nome: {

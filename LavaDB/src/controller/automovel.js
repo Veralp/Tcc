@@ -1,6 +1,20 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
+const getByClienteId = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const automovel = await prisma.automovel.findMany({
+            where: {
+                clienteId: parseInt(id)
+            }
+        });
+        return res.json(automovel);
+    } catch (error) {
+        res.status(400).json({ error: error.message }).end();
+    }
+}
+
 const create = async (req, res) => {
     try {
         const data = req.body;
@@ -72,5 +86,6 @@ module.exports = {
     read,
     create,
     update,
-    del
+    del,
+    getByClienteId
 };

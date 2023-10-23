@@ -16,6 +16,7 @@ async function Horarios(req, res) {
       await prisma.disponibilidade.create({
         data: data,
         horaIni: data, // Defina a hora de início como a própria data
+        horaFim: data,
       });
     }
 
