@@ -24,6 +24,8 @@ function verificaLogin() {
         linkLogin.innerHTML = userDoLocalStorage
         const linkLogout = document.querySelector("#link-logout")
         linkLogout.classList.remove('hide')
+        const linkCadastro = document.querySelector("#link-cadastro");
+        linkCadastro.style.display = 'none';
     } else {
         console.log("Usuario não logado.");
     }

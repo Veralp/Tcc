@@ -19,24 +19,24 @@ function login() {
         .then(resp => resp.json())
         .then(resp => {
             console.log(resp)
-                localStorage.setItem(
-                    `[lavarapido-email]`,
-                    resp.email,   
-                )
-                localStorage.setItem(
-                    `[lavarapido-id]`,
-                    resp.id,   
-                )
-                localStorage.setItem(
-                    `[lavarapido-nome]`,
-                    resp.nome,   
-                )
+            localStorage.setItem(
+                `[lavarapido-email]`,
+                resp.email,
+            )
+            localStorage.setItem(
+                `[lavarapido-id]`,
+                resp.id,
+            )
+            localStorage.setItem(
+                `[lavarapido-nome]`,
+                resp.nome,
+            )
+            window.location.href = '../home/';
         })
         .catch(err => console.log(err))
 }
 
 const button = document.querySelector("#botaoLogin")
 button.addEventListener('click', e => {
-login()
-
+    login()
 })
