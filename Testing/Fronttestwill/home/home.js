@@ -7,6 +7,7 @@ function nextSlide() {
     slides[currentIndex].style.opacity = 0;
     currentIndex = (currentIndex + 1) % slides.length;
     slides[currentIndex].style.opacity = 1;
+    
 }
 
 function startCarousel() {
@@ -26,6 +27,16 @@ $(".custom-carousel").owlCarousel({
       $(this).toggleClass("active");
     });
   });
+
+  const div = document.querySelector('.btn')
+  div.onclick = function() {
+    document.documentElement.classList.toggle('clean')
+    if(div.innerText == 'CLEAN') {
+      div.innerText = 'WASH'  
+    } else {
+      div.innerText = 'CLEAN'
+    }
+  }
 
 function verificaLogin() {
     if (userDoLocalStorage) {
