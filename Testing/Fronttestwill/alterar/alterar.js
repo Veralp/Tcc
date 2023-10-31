@@ -1,24 +1,44 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("cadastro");
+const uriCliente = 'http://localhost:3000/cliente';
+const uriAutomovel = 'http://localhost:3000/automovel';
+const alterarCadastro = document.getElementById("alterar");
 
-    form.addEventListener("submit", function (e) {
+
+
+    alterar.addEventListener("submit", function (e) {
         e.preventDefault();
 
-        const nome = document.getElementById("nome").value;
-        const endereco = document.getElementById("endereco").value;
-        const telefone = document.getElementById("telefone").value;
-        const email = document.getElementById("email").value;
-        const senha = document.getElementById("senha").value;
-        const modelo = document.getElementById("modelo").value;
-        const placa = document.getElementById("placa").value;
-        const marca = document.getElementById("marca").value;
+        const alterarClienteAutomovel = {
+            nome: cadastro.nome.value,
+            endereco: cadastro.endereco.value,
+            telefone: cadastro.telefone.value,
+            email: cadastro.email.value,
+            senha: cadastro.senha.value,
+            modelo: cadastro.modelo.value,
+            placa: cadastro.placa.value,
+            marca: cadastro.marca.value,
+        };
 
-        // Validação simples (pode ser melhorada)
-        if (nome && endereco && telefone && email && senha && modelo && placa && marca) {
-            alert("Cadastro realizado com sucesso!");
-            form.reset();
-        } else {
-            alert("Preencha todos os campos.");
-        }
-    });
+        const optionsalterarClienteAutomovel= {
+            method: 'UPDATE',
+            headers: { 'Content-Type': 'application/json'},
+            body: JSON.stringify(optionsalterarClienteAutomovel)
+        };
+        
+        fetch(uriCliente + '/alterar/:id', optionsalterarClienteAutomovel)
+        .then(resp => resp.status)
+        .then(resp => {
+            if (resp == 201) {
+                console.log(resp)
+            } else {
+                alert('Erro ao enviar dados do cliente');
+            }
+        });
+
 });
+
+
+
+
+
+
+

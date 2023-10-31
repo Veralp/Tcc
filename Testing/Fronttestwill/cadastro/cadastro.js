@@ -28,6 +28,7 @@ cadastro.addEventListener('submit', e => {
         .then(resp => {
             if (resp == 201) {
                 console.log(resp)
+                window.location.href = '../home/';
             } else {
                 alert('Erro ao enviar dados do cliente');
             }

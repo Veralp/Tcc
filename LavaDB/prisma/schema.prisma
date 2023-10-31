@@ -8,25 +8,25 @@ datasource db {
 }
 
 model Cliente {
-  id           Int           @id @default(autoincrement())
-  nome         String
-  endereco     String
-  telefone     String
-  email        String        @unique
-  senha        String
-  automoveis   Automovel[]
-  transacoes   Transacao[]
+  id         Int         @id @default(autoincrement())
+  nome       String
+  endereco   String
+  telefone   String
+  email      String      @unique
+  senha      String
+  automoveis Automovel[]
+
   agendamentos Agendamento[]
 }
 
 model Automovel {
-  id           Int           @id @default(autoincrement())
-  modelo       String
-  placa        String        @unique
-  marca        String
-  clienteId    Int // Adicione este campo para representar a associação com um cliente
-  cliente      Cliente       @relation(fields: [clienteId], references: [id])
-  Transacao    Transacao[]
+  id        Int     @id @default(autoincrement())
+  modelo    String
+  placa     String  @unique
+  marca     String
+  clienteId Int // Adicione este campo para representar a associação com um cliente
+  cliente   Cliente @relation(fields: [clienteId], references: [id])
+
   agendamentos Agendamento[]
 }
 
@@ -35,20 +35,7 @@ model Servico {
   nome         String
   descricao    String
   preco        Decimal
-  transacoes   Transacao[]
   agendamentos Agendamento[]
-}
-
-//Retirar tabela, não está sendo utilizada.
-model Transacao {
-  id          Int       @id @default(autoincrement())
-  clienteId   Int
-  automovelId Int
-  servicoId   Int
-  valorTotal  Decimal
-  cliente     Cliente   @relation(fields: [clienteId], references: [id], onDelete: Cascade)
-  automovel   Automovel @relation(fields: [automovelId], references: [id])
-  servico     Servico   @relation(fields: [servicoId], references: [id])
 }
 
 model Agendamento {

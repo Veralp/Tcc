@@ -94,6 +94,7 @@ const read = async (req, res) => {
 
 const update = async (req, res) => {
     try {
+        const { nome, endereco, telefone, email, senha, modelo, placa, marca } = req.body;
         const { id } = req.params;
         const data = req.params;
         let cliente = await prisma.cliente.update({

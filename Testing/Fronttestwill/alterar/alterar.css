@@ -1,81 +1,129 @@
-/* Estilos gerais da página */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(to bottom right, #7d55c7, #6c63ff);
-    color: #fff;
-    text-align: center;
+@import url(https://fonts.googleapis.com/css?family=Exo:100,200,400);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+
+body{
+	margin: 0;
+	padding: 0;
+	background: #fff;
+
+	color: #fff;
+	font-family: Arial;
+	font-size: 12px;
 }
 
-.grad {
-    height: 100%;
+.grad{
+	position: absolute;
+	top: -20px;
+	left: -20px;
+	right: -40px;
+	bottom: -40px;
+	width: auto;
+	height: auto;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.65))); /* Chrome,Safari4+ */
+	z-index: 1;
+	opacity: 0.7;
 }
 
-/* Estilos do cabeçalho */
-.header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80px;
-    background: #333;
+.header{
+	position: absolute;
+	top: calc(50% - 35px);
+	left: calc(50% - 255px);
+	z-index: 2;
 }
 
-.header div {
-    font-size: 24px;
-    font-weight: bold;
-    color: #ff6600;
+.header div{
+	float: left;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 35px;
+	font-weight: 200;
 }
 
-.header span {
-    font-weight: normal;
+.header div span{
+	color: #5379fa !important;
 }
 
-/* Estilos do formulário */
-form#cadastro {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    margin: 30px;
+#alterar{
+	position: absolute;
+	top: calc(50% - 75px);
+	left: calc(50% - 50px);
+	height: 300px;
+	width: 300px;
+	padding: 10px;
+	z-index: 2;
+
 }
 
-form#cadastro input {
-    margin: 10px 0;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background: #333;
-    color: #fff;
+#alterar input[type=text],
+#alterar input[type=email]{
+	width: 230px;
+	height: 30px;
+	background: transparent;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 4px;
+  margin-top: 10px;
 }
 
-form#cadastro input[type="submit"] {
-    background: #6c63ff;
-    font-weight: bold;
-    cursor: pointer;
+#alterar input[type=password]{
+	width: 230px;
+	height: 30px;
+	background: transparent;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 4px;
+	margin-top: 10px;
 }
 
-/* Estilo para o texto do formulário */
-form#cadastro input::placeholder {
-    color: #6c63ff;
+input[type=submit]{
+	width: 240px;
+	height: 35px;
+	background: #fff;
+	border: 1px solid #fff;
+	cursor: pointer;
+	border-radius: 2px;
+	color: #a18d6c;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 6px;
+	margin-top: 10px;
 }
 
-/* Estilo para o botão de enviar */
-form#cadastro input[type="submit"] {
-    background: #6c63ff;
-    color: #fff;
-    font-weight: bold;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease;
+.alterar input[type=button]:hover{
+	opacity: 0.8;
 }
 
-form#cadastro input[type="submit"]:hover {
-    background: #ff6600;
+.alterar input[type=button]:active{
+	opacity: 0.6;
 }
 
+.alterar input[type=text]:focus{
+	outline: none;
+	border: 1px solid rgba(255,255,255,0.9);
+}
+
+.alterar input[type=password]:focus{
+	outline: none;
+	border: 1px solid rgba(255,255,255,0.9);
+}
+
+.alterar input[type=button]:focus{
+	outline: none;
+}
+
+::-webkit-input-placeholder{
+   color: rgba(255,255,255,0.6);
+}
+
+::-moz-input-placeholder{
+   color: rgba(255,255,255,0.6);
+}
