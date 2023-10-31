@@ -57,6 +57,22 @@
 
     /*carrousel*/
 
+    .titulo1 {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.288);
+      color: white;
+      font-size: 24px;
+      z-index: 1;
+    }
+
+    #titulo{
+      font-size: 100px;
+      padding-top: 12%;
+    }
+
     .carousel {
         position: relative;
         width: 100vw;
@@ -524,6 +540,16 @@ button {
   }
   
   --------Fim do carro da Vera   */
+
+
+
+
+
+
+  
+.AboutUs{
+  background-color: #dfdfdf;
+}
 
   .custom-section {
     display: flex;
