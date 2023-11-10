@@ -4,41 +4,40 @@ const alterarCadastro = document.getElementById("alterar");
 
 
 
-    alterar.addEventListener("submit", function (e) {
-        e.preventDefault();
+alterar.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-        const alterarClienteAutomovel = {
-            nome: cadastro.nome.value,
-            endereco: cadastro.endereco.value,
-            telefone: cadastro.telefone.value,
-            email: cadastro.email.value,
-            senha: cadastro.senha.value,
-            modelo: cadastro.modelo.value,
-            placa: cadastro.placa.value,
-            marca: cadastro.marca.value,
-        };
+    const idDoCliente = localStorage.getItem('[lavarapido-id]'); // Obtendo o ID do localStorage
 
-        const optionsalterarClienteAutomovel= {
-            method: 'UPDATE',
-            headers: { 'Content-Type': 'application/json'},
-            body: JSON.stringify(optionsalterarClienteAutomovel)
-        };
-        
-        fetch(uriCliente + '/alterar/:id', optionsalterarClienteAutomovel)
-        .then(resp => resp.status)
+    const alterarClienteAutomovel = {
+        nome: alterarCadastro.nome.value,
+        endereco: alterarCadastro.endereco.value,
+        telefone: alterarCadastro.telefone.value,
+        email: alterarCadastro.email.value,
+        senha: alterarCadastro.senha.value,
+        modelo: alterarCadastro.modelo.value,
+        placa: alterarCadastro.placa.value,
+        marca: alterarCadastro.marca.value,
+    };
+
+    const optionsAlterarClienteAutomovel = {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(alterarClienteAutomovel)
+    };
+
+    fetch(`${uriCliente}/${idDoCliente}`, optionsAlterarClienteAutomovel)
+        .then(resp => resp.json())
         .then(resp => {
-            if (resp == 201) {
-                console.log(resp)
+            if (resp === 202) {
+                console.log("Cliente alterado com sucesso");
             } else {
                 alert('Erro ao enviar dados do cliente');
             }
+        })
+        .catch(error => {
+            console.error('Erro:', error);
+            alert('Erro ao enviar dados do cliente');
         });
-
 });
-
-
-
-
-
-
 

@@ -31,6 +31,7 @@ function login() {
                 `[lavarapido-nome]`,
                 resp.nome,
             )
+            
             window.location.href = '../home/';
         })
         .catch(err => console.log(err))

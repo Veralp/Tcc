@@ -96,18 +96,36 @@ const update = async (req, res) => {
     try {
         const { nome, endereco, telefone, email, senha, modelo, placa, marca } = req.body;
         const { id } = req.params;
-        const data = req.params;
         let cliente = await prisma.cliente.update({
-            data: data,
             where: {
                 id: parseInt(id)
+            },
+            data: {
+                nome,
+                endereco,
+                telefone,
+                email,
+                senha: await incriptarSenha(senha),
+                automoveis: {
+                    update: {
+                        where: {
+                            placa: placa
+                        },
+                        data: {
+                            modelo: modelo,
+                            marca: marca
+                        }
+                    }
+                },
             }
         });
         res.status(202).json(cliente).end();
     } catch (error) {
+        console.log(error)
         res.status(404).json({ error: error.message }).end();
     }
 }
+
 
 const del = async (req, res) => {
     try {
