@@ -4,41 +4,38 @@ const alterarCadastro = document.getElementById("alterar");
 
 
 
-    alterar.addEventListener("submit", function (e) {
-        e.preventDefault();
+alterar.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-        const alterarClienteAutomovel = {
-            nome: cadastro.nome.value,
-            endereco: cadastro.endereco.value,
-            telefone: cadastro.telefone.value,
-            email: cadastro.email.value,
-            senha: cadastro.senha.value,
-            modelo: cadastro.modelo.value,
-            placa: cadastro.placa.value,
-            marca: cadastro.marca.value,
-        };
+    const alterarClienteAutomovel = {
+        nome: alterarCadastro.nome.value,
+        endereco: alterarCadastro.endereco.value,
+        telefone: alterarCadastro.telefone.value,
+        email: alterarCadastro.email.value,
+        senha: alterarCadastro.senha.value,
+        modelo: alterarCadastro.modelo.value,
+        placa: alterarCadastro.placa.value,
+        marca: alterarCadastro.marca.value,
+    };
 
-        const optionsalterarClienteAutomovel= {
-            method: 'UPDATE',
-            headers: { 'Content-Type': 'application/json'},
-            body: JSON.stringify(optionsalterarClienteAutomovel)
-        };
-        
-        fetch(uriCliente + '/alterar/:id', optionsalterarClienteAutomovel)
+    const optionsAlterarClienteAutomovel = {
+        method: 'PUT', // Mude 'UPDATE' para 'PUT'
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(alterarClienteAutomovel) // Use a variável correta
+    };
+
+    // Substitua ':id' pelo ID real do recurso
+    fetch(uriCliente + 'cliente/', optionsAlterarClienteAutomovel) // Substitua '123' pelo ID real
         .then(resp => resp.status)
         .then(resp => {
-            if (resp == 201) {
-                console.log(resp)
+            if (resp === 200) { // Verifica se foi uma atualização bem-sucedida (status 200)
+                console.log(resp);
             } else {
                 alert('Erro ao enviar dados do cliente');
             }
+        })
+        .catch(error => {
+            console.error('Erro:', error);
+            alert('Erro ao enviar dados do cliente');
         });
-
 });
-
-
-
-
-
-
-
