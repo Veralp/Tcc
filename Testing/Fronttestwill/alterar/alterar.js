@@ -7,6 +7,8 @@ const alterarCadastro = document.getElementById("alterar");
 alterar.addEventListener("submit", function (e) {
     e.preventDefault();
 
+    const idDoCliente = localStorage.getItem('[lavarapido-id]'); // Obtendo o ID do localStorage
+
     const alterarClienteAutomovel = {
         nome: alterarCadastro.nome.value,
         endereco: alterarCadastro.endereco.value,
@@ -19,17 +21,16 @@ alterar.addEventListener("submit", function (e) {
     };
 
     const optionsAlterarClienteAutomovel = {
-        method: 'PUT', // Mude 'UPDATE' para 'PUT'
+        method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(alterarClienteAutomovel) // Use a variável correta
+        body: JSON.stringify(alterarClienteAutomovel)
     };
 
-    // Substitua ':id' pelo ID real do recurso
-    fetch(uriCliente + 'cliente/', optionsAlterarClienteAutomovel) // Substitua '123' pelo ID real
-        .then(resp => resp.status)
+    fetch(`${uriCliente}/${idDoCliente}`, optionsAlterarClienteAutomovel)
+        .then(resp => resp.json())
         .then(resp => {
-            if (resp === 200) { // Verifica se foi uma atualização bem-sucedida (status 200)
-                console.log(resp);
+            if (resp === 202) {
+                console.log("Cliente alterado com sucesso");
             } else {
                 alert('Erro ao enviar dados do cliente');
             }
@@ -39,3 +40,4 @@ alterar.addEventListener("submit", function (e) {
             alert('Erro ao enviar dados do cliente');
         });
 });
+
