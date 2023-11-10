@@ -50,3 +50,9 @@ model Agendamento {
   cliente        Cliente   @relation(fields: [clienteId], references: [id], onDelete: Cascade)
   servico        Servico   @relation(fields: [servicoId], references: [id])
 }
+
+model Mensagem {
+  id       Int    @id @default(autoincrement())
+  nome     String
+  mensagem String
+}

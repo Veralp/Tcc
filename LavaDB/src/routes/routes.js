@@ -6,7 +6,7 @@ const agendamento = require('../controller/agendamento');
 const automovel = require('../controller/automovel');
 const servico = require('../controller/servico');
 const cliente = require('../controller/cliente');
-
+const mensagem = require ('../controller/mensagem');
 
 router.get('/', (req, res) => { return res.json("Api Lava Respondendo")});
 
@@ -37,6 +37,8 @@ router.post('/agendamento', agendamento.create);
 router.get('/agendamento', agendamento.read);
 router.get('/agendamento/:id', agendamento.read);
 router.put('/agendamento/:id', agendamento.update);
-router.delete('/agendamento/:id', agendamento.del)
+router.delete('/agendamento/:id', agendamento.del);
 
+router.post('/mensagem', mensagem.create);
+router.get('/agendamento', agendamento.read);
 module.exports = router;

@@ -58,3 +58,6 @@ function logout() {
     window.location.reload();
 }
 
+function getMensagem() {
+    
+}
