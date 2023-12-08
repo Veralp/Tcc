@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="../js/owlcarrousel/dist/assets/owl.theme.default.min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/logo.png" />
     <title>Lava-Rápido</title>
 </head>
 
@@ -18,8 +19,9 @@
             <ul>
                 <li><a href="./index.html">Home</a></li>
                 <li><a href="#services-section">Serviços</a></li>
-                <li><a href="./sobrenos.html">Sobre Nós</a></li>
-                <li><a href="./contato.html">Contato</a></li>
+                <li><a href="#AboutUs">Sobre Nós</a></li>
+                <li><a href="#section_form001a">Contato</a></li>
+                <li><a href="../agendamento/index.html" id="link-agendamento">Agendamento</a></li>
                 <li><a href="../login" id="link-login">Login</a></li>
                 <li onclick="logout()" id="link-logout" class="hide visible">Logout</li>
                 <li><a href="../alterar" id="link-alterar" class="hide visible">Alterar</a></li>
@@ -38,7 +40,7 @@
                 style="background-image: url('../assets/brad-starkey-eP8h7YVhFHk-unsplash.jpg');">
             </div>
             <div class="carousel-slide"
-                style="background-image: url('../assets/oficina-para-polimento-com-cristalizacao.jpg');">
+                style="background-image: url('https://media.autoexpress.co.uk/image/private/s--X-WVjvBW--/f_auto,t_content-image-full-desktop@1/v1563183740/autoexpress/2017/05/car_photo_438622.jpg');">
             </div>
             <div class="carousel-slide" style="background-image: url('../assets/mintosko-V4b2j7f1dfc-unsplash.jpg');">
             </div>
@@ -114,7 +116,7 @@
 
     <!--fim-Serviços-->
 
-    <section class="AboutUs">
+    <section id="AboutUs">
 
         <!--Sobre nós-->
         <!-- <div class='btn'>WASH</div>
@@ -134,7 +136,7 @@
 
         <div class="custom-section">
             <h2>Nossa História</h2>
-            <img src="../" alt="cliente">
+            <img id="aboutImg" src="../assets/vintage-car-wash-post-card-boston-2-pd.jpg" alt="cliente">
             <p>Desde o início, em 2007, nosso propósito sempre foi ir além da lavagem de veículos. Eu sabia que
                 poderíamos
                 chegar longe. Sempre acreditei que o que eu procurava como cliente (comprometimento, qualidade e
@@ -146,12 +148,12 @@
                 Esperamos por você..</p>
 
             <h2>Nossa Equipe</h2>
-            <img src="../assets/-removebg-preview.png" alt="equipe">
+            <img id="aboutImg" src="../assets/IMG_7040.jpg" alt="equipe">
             <p>Nossa equipe é composta por profissionais experientes e dedicados em suas respectivas áreas. Estamos
                 comprometidos em fornecer soluções de alta qualidade para nossos clientes.</p>
 
             <h2>Nossos Valores</h2>
-            <img src="../../../Frontend/assets/Ética-e-Moral-e-destacada-1024x728.png" alt="cliente">
+            <img id="aboutImg" src="../assets/3611_serving-up-customer-satisfaction.webp" alt="cliente">
             <p>Nosso compromisso com a excelência, integridade e inovação orienta cada aspecto do nosso trabalho.
                 Estamos
                 empenhados em criar um impacto positivo em tudo o que fazemos.</p>
@@ -160,7 +162,7 @@
 
     </section>
     <!--fim-Sobre nós-->
-    <section class="section_form001a">
+    <section id="section_form001a">
         <div class="form001a_text">
             <div class="form001a_text-span">
                 <span>Contate nos</span>
@@ -192,7 +194,7 @@
                     <span><ion-icon name="mail"></ion-icon></span>
                 </div>
                 <div class="form001_text-list--txt">
-
+                    <span>veradcj.fl@hotmail.com</span>
                 </div>
             </div>
             <div class="form001a_text-subtitle">
@@ -202,19 +204,19 @@
                 <div class="form001a_text-socialmedias--row">
                     <div class="form001a_text-socialmedias--unit">
                         <a href="https://facebook.com">
-                            <ion-icon name="logo-facebook">
+                            <ion-icon id="iconsSocial" name="logo-facebook">
                         </a>
                         </ion-icon>
                     </div>
                     <div class="form001a_text-socialmedias--unit">
                         <a href="https://instagram.com">
-                            <ion-icon name="logo-instagram"></ion-icon>
+                            <ion-icon id="iconsSocial" name="logo-instagram"></ion-icon>
                         </a>
                     </div>
 
                     <div class="form001a_text-socialmedias--unit">
                         <a href="https://twitter.com">
-                            <ion-icon name="logo-twitter"></ion-icon>
+                            <ion-icon id="iconsSocial" name="logo-twitter"></ion-icon>
                         </a>
                     </div>
                 </div>
@@ -225,18 +227,18 @@
             <div class="form001a_text-socialmedias">
                 <div class="form001a_text-socialmedias--unit">
                     <a href="tel:+19998150425">
-                        <ion-icon name="logo-whatsapp"></ion-icon>
+                        <ion-icon id="iconsSocial" name="logo-whatsapp"></ion-icon>
                     </a>
                 </div>
 
                 <div class="form001a_text-socialmedias--unit">
                     <a href="tel:+19998150425">
-                        <ion-icon name="call"></ion-icon>
+                        <ion-icon id="iconsSocial" name="call"></ion-icon>
                     </a>
                 </div>
                 <div class="form001a_text-socialmedias--unit">
                     <a href="mailto:veradcj.fl@hotmail.com">
-                        <ion-icon name="mail"></ion-icon>
+                        <ion-icon id="iconsSocial"name="mail-outline"></ion-icon>
                     </a>
                 </div>
             </div>

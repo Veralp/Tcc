@@ -51,6 +51,7 @@ function verificaLogin() {
         console.log("Usuario não logado.");
     }
 }
+
 verificaLogin();
 
 function logout() {
