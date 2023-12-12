@@ -20,21 +20,23 @@
         <input type="text" placeholder="valor-total" value="" id="valor-total" min="0" max="1000">
         <input type="text" placeholder="Inicio Ex: 13/06/2023" value="10/20/2023" id="horario-inicio">
         <input type="text" placeholder="Término Ex: 13/06/2023" value="10/21/2023" id="horario-termino">
-        <input class="salvar" type="submit" value="Salvar Agendamento"/>
+        <input class="salvar" type="submit" value="Salvar Agendamento" />
     </form>
     <table>
-        <thead>
-            <tr>
-                <th>Cliente</th>
-                <th>Automovel</th>
-                <th>Serviço</th>
-                <th>Valor do serviço</th>
-                <th>Data de inicio</th>
-                <th>Data de termino</th>
-                <th>Deletar</th>
-            </tr>
-        </thead>
-        <tbody id="agendamentoCliente"></tbody>
+        <div class="issoAE">
+            <thead>
+                <tr>
+                    <th>Cliente</th>
+                    <th>Automovel</th>
+                    <th>Serviço</th>
+                    <th>Valor do serviço</th>
+                    <th>Data de inicio</th>
+                    <th>Data de termino</th>
+                    <th>Deletar</th>
+                </tr>
+            </thead>
+            <tbody id="agendamentoCliente"></tbody>
+        </div>
     </table>
 </body>
 <script src="agendamento.js"></script>

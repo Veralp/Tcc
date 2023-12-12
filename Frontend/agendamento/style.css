@@ -1,148 +1,106 @@
-@import url(https://fonts.googleapis.com/css?family=Exo:100,200,400);
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+	/* style.css */
 
-body{
-	margin: 0;
-	padding: 0;
-	background: #fff;
-	color: #fff;
-	font-family: Arial;
-	font-size: 12px;
-}
+	* {
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+	}
 
-.grad{
-	position: absolute;
-	top: -20px;
-	left: -20px;
-	right: -40px;
-	bottom: -40px;
-	width: auto;
-	height: auto;
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.65))); /* Chrome,Safari4+ */
-	z-index: -1;
-	opacity: 0.7;
-}
+	body {
+		margin: 0;
+		padding: 0;
+		font-family: 'Arial', sans-serif;
+	}
 
-.header{
-	position: absolute;
-	top: calc(50% - 35px);
-	left: calc(45% - 255px);
-	z-index: 2;
-}
+	.grad {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		background: linear-gradient(to bottom right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.65));
+		z-index: -1;
+	}
 
-.header div{
-	float: left;
-	color: #fff;
-	font-family: 'Exo', sans-serif;
-	font-size: 35px;
-	font-weight: 200;
-}
+	.header {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
 
-.header div span{
-	color: #5379fa !important;
-}
+	.header div {
+		color: #fff;
+		font-family: 'Exo', sans-serif;
+		font-size: 35px;
+		font-weight: 200;
+	}
 
-#agendamento{
-	position: absolute;
-	top: calc(50% - 75px);
-	left: calc(50% - 50px);
-	height: 300px;
-	width: 300px;
-	padding: 10px;
-	z-index: 2;
+	.header div span {
+		color: #5379fa;
+	}
 
-}
+	#agendamento {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		max-width: 300px;
+		width: 100%;
+		padding: 20px;
+		background: rgba(255, 255, 255, 0.8);
+		border-radius: 5px;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	}
 
-#agendamento input[type=text],
-#agendamento input[type=datetime],
-#agendamento select,
-#agendamento input[type=email]{
-	width: 230px;
-	height: 30px;
-	background: transparent;
-	border: 1px solid rgba(255,255,255,0.6);
-	border-radius: 2px;
-	color: #fff;
-	font-family: 'Exo', sans-serif;
-	font-size: 16px;
-	font-weight: 400;
-	padding: 4px;
-  margin-top: 10px;
-}
+	#agendamento input[type="text"],
+	#agendamento input[type="datetime"],
+	#agendamento select {
+		width: 100%;
+		height: 30px;
+		margin-top: 10px;
+		padding: 5px;
+		box-sizing: border-box;
+	}
 
-option {
-	color: #000;
-}
+	#agendamento input[type="submit"] {
+		width: 100%;
+		height: 35px;
+		margin-top: 10px;
+		background: #5379fa;
+		color: #fff;
+		border: none;
+		border-radius: 5px;
+		cursor: pointer;
+	}
 
-#agendamento input[type=password]{
-	width: 230px;
-	height: 30px;
-	background: transparent;
-	border: 1px solid rgba(255,255,255,0.6);
-	border-radius: 2px;
-	color: #fff;
-	font-family: 'Exo', sans-serif;
-	font-size: 16px;
-	font-weight: 400;
-	padding: 4px;
-	margin-top: 10px;
-}
+	table {
+		width: 100%;
+		margin-top: 20px;
+		border-collapse: collapse;
+	}
 
-.servico-id{
-	width: 230px;
-	height: 30px;
-	background: transparent;
-	border: 1px solid rgba(255,255,255,0.6);
-	border-radius: 2px;
-	color: #fff;
-	font-family: 'Exo', sans-serif;
-	font-size: 16px;
-	font-weight: 400;
-	padding: 4px;
-	margin-top: 10px;
-}
-.salvar{
-	width: 240px;
-	height: 35px;
-	background: #fff;
-	border: 1px solid #fff;
-	cursor: pointer;
-	border-radius: 2px;
-	color: #a18d6c;
-	font-family: 'Exo', sans-serif;
-	font-size: 16px;
-	font-weight: 400;
-	padding: 6px;
-	margin-top: 10px;
-}
+	table,
+	th,
+	td {
+		border: 1px solid #fff;
+	}
 
-.agendamento input[type=button]:hover{
-	opacity: 0.8;
-}
+	th,
+	td {
+		padding: 10px;
+		text-align: left;
+	}
 
-.agendamento input[type=button]:active{
-	opacity: 0.6;
-}
+	th {
+		background: #5379fa;
+		color: #fff;
+	}
 
-.agendamento input[type=text]:focus{
-	outline: none;
-	border: 1px solid rgba(255,255,255,0.9);
-}
+	#agendamentoCliente {
+		color: #000;
+	}
 
-.agendamento input[type=password]:focus{
-	outline: none;
-	border: 1px solid rgba(255,255,255,0.9);
-}
-
-.agendamento input[type=button]:focus{
-	outline: none;
-}
-
-::-webkit-input-placeholder{
-   color: rgba(255,255,255,0.6);
-}
-
-::-moz-input-placeholder{
-   color: rgba(255,255,255,0.6);
-}
-
+	.issoAE {
+		overflow-x: auto;
+	}

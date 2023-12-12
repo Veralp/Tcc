@@ -50,6 +50,7 @@ form.addEventListener('submit', async (e) => {
     await fetch(urlFetch + '/agendamento', options)
   const responseFormatada = await responseCadastroAgendamento.json()
   console.log(responseFormatada)
+  window.location.reload();
   //window.location.reload()
 });
 
@@ -79,7 +80,7 @@ function montarAgendamento(array) {
     line.appendChild(dataInicio);
     line.appendChild(dataTermino);
     line.appendChild(deletar);
-    
+
     agendamento.appendChild(line);
   });
 }
