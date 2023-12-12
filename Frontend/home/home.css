@@ -16,12 +16,15 @@
     }
 
     header {
+      width: 100%;
+      z-index: 3;
       background-color: #333;
       color: #fff;
       padding: 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: fixed;
     }
 
     header h1 {
@@ -46,8 +49,6 @@
     header a.active {
       text-decoration: underline;
     }
-
-
 
     main {
       display: flex;
@@ -123,7 +124,6 @@
 
 
     /*Serviços*/
-
 
     .container {
       max-width: 1200px;
@@ -686,7 +686,7 @@
       width: 100%;
       height: auto;
       font-weight: 600;
-      color: #daac56;
+      color: #343434;
     }
 
     .form001a_text-title {
@@ -718,7 +718,7 @@
       margin-right: 10px;
       font-size: 140%;
       font-weight: 600;
-      color: #daac56;
+      color: #343434;
     }
 
     .form001_text-list--txt {
@@ -748,7 +748,7 @@
       -moz-border-radius: 8px;
       -ms-border-radius: 8px;
       -o-border-radius: 8px;
-      border: 2px solid #daac56;
+      border: 2px solid #343434;
     }
 
     .form001a-button {
@@ -762,7 +762,7 @@
       -ms-border-radius: 8px;
       -o-border-radius: 8px;
       border: none;
-      background-color: #daac56;
+      background-color: #343434;
       font-weight: 600;
       font-size: 150%;
       color: #fff;
@@ -805,7 +805,7 @@
       -moz-border-radius: 50%;
       -ms-border-radius: 50%;
       -o-border-radius: 50%;
-      background-color: #daac56;
+      background-color: #343434;
       text-align: center;
       padding-top: 1vw;
       font-size: 2vw;
@@ -956,7 +956,7 @@
       width: 100%;
       height: auto;
       font-weight: 600;
-      color: #daac56;
+      color: #343434;
     }
 
     .form001a_text-title {
@@ -988,7 +988,7 @@
       margin-right: 10px;
       font-size: 140%;
       font-weight: 600;
-      color: #daac56;
+      color: #343434;
     }
 
     .form001_text-list--txt {
@@ -1018,7 +1018,7 @@
       -moz-border-radius: 8px;
       -ms-border-radius: 8px;
       -o-border-radius: 8px;
-      border: 2px solid #daac56;
+      border: 2px solid #343434;
     }
 
     .form001a-button {
@@ -1032,7 +1032,7 @@
       -ms-border-radius: 8px;
       -o-border-radius: 8px;
       border: none;
-      background-color: #daac56;
+      background-color: #343434;
       font-weight: 600;
       font-size: 150%;
       color: #fff;
@@ -1040,7 +1040,7 @@
     }
 
     .form001a-button:hover {
-      background-color: #c88e2e;
+      background-color: #343434;
     }
 
     .form001a_text-subtitle {
@@ -1075,7 +1075,7 @@
       -moz-border-radius: 50%;
       -ms-border-radius: 50%;
       -o-border-radius: 50%;
-      background-color: #daac56;
+      background-color: #343434;
       text-align: center;
       padding-top: 1vw;
       font-size: 2vw;
@@ -1084,7 +1084,7 @@
     }
 
     .form001a_text-socialmedias--unit:hover {
-      background-color: #c88e2e;
+      background-color:#343434;
 
     }
 
