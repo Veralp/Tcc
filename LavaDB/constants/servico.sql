@@ -2,7 +2,7 @@ DELIMITER //
 CREATE PROCEDURE InserirServicos()
 BEGIN
     -- Atribua o valor à variável global
-    SET @minha_variavel_global = 'Este é o valor da minha variável global';
+    SET @globals = 'Este é o valor da minha variável global';
 
     -- Inserir dados na tabela Servico
     INSERT INTO Servico (nome, descricao, preco)
@@ -29,7 +29,7 @@ BEGIN
         );
         
     -- Você pode usar a variável global em consultas subsequentes
-    SELECT @minha_variavel_global;
+    SELECT @globals;
 END //
 DELIMITER ;
 

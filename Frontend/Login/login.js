@@ -1,31 +1,44 @@
+const uri = 'http://localhost:3000/cliente'
+function login() {
+    const userName = document.querySelector('#user')
+    const password = document.querySelector('#password');
 
-// auth.js (authentication route file)
-const bcrypt = require('bcrypt');
+    const body = {
+        "email": userName.value,
+        "senha": password.value,
+    }
 
-router.post('/login', (req, res, next) => {
-  const { username, password } = req.body;
+    const options = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+    };
 
-  User.findOne({
-    where: {
-      username: req.body.username
-    }
-  })
-  .then(user => {
-    if(!user) {
-      return next({ status: 401 })
-    }
-    else {
-      bcrypt.compare(req.body.password, user.password, (error, result) => {
-        if(result) {
-          res.send(user)
-        }
-        else {
-          console.log(error)
-          return next({ status: 401 })
-        }
-      })
-    }
-  })
-  .catch(error => next(error));
-  
+    options.body = JSON.stringify(body)
+
+    fetch(uri + '/login', options)
+        .then(resp => resp.json())
+        .then(resp => {
+            console.log(resp)
+            localStorage.setItem(
+                `[lavarapido-email]`,
+                resp.email,
+            )
+            localStorage.setItem(
+                `[lavarapido-id]`,
+                resp.id,
+            )
+            localStorage.setItem(
+                `[lavarapido-nome]`,
+                resp.nome,
+            )
+            
+            window.location.href = '../home/';
+        })
+        .catch(err => console.log(err))
+}
+
+const button = document.querySelector("#botaoLogin")
+button.addEventListener('click', e => {
+    login()
 })
+
