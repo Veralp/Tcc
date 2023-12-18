@@ -11,4 +11,4 @@ app.use(cors());
 app.use(express.json());
 app.use(routes);
 
-app.listen(PORT, () => { console.log("Listening on PORT " + PORT) })
+app.listen(PORT, () => { console.log("Backend não morreu " + PORT) })
